@@ -1,49 +1,58 @@
 
-//cREATE A SHOPPING LIST
-
+//Create Shopping List
 //User inputs items that they want
-
 //Check id the item is already on the list if not add message saying it is added
-
 //if it is already there say item is already in the list
 
+//shoppingList (variable) = shopping list array [] 
+const shoppingList = [];
 
+// function to add items on the shopping list 
+function addToShppingList() {
 
-function addItem() {
-    //get the element <input type="text" id="item"> in html and show its value
+    // variable newItem = get the value from the html <input type="text" id="item">
     let newItem = document.getElementById("item").value
-    
-    //display in console the variable value of newItem
-    console.log(newItem)
 
-    //get the element <ul id="list">
-    const ul = document.getElementById("list");
+    //Check if item in variable (newItem) already exists in the array (shoppingList) and assign true or false
+    let itemAlreadyExists = shoppingList.includes(newItem);
 
-    //
-    console.log(ul)
+// if (newItem)is empty it will display an alert  saying "Please add an item"
+    if (newItem == "") {
+        alert("Please add an item")
+        return
+    }
 
-    //creating a new blank li in HTML file (no text text inside)
-    let li = document.createElement("li");
+    //if (itemAlreadyExists) it will display an alert saying "Item already there"
+    if (itemAlreadyExists) {
+        //if true show alert
+        alert("Item already there")
+    }
+    //add item to list
+    else {
 
-    // attached the child (the item text) to the li 
-    li.appendChild(document.createTextNode(newItem));
-   // 
-    ul.appendChild(li);
+        shoppingList.push(newItem);
+        console.log(shoppingList)
 
-    // if (item.includes(document.getElementById("item").value)){
-    //     alert("Item already there")
+        //ul html code here
 
-    // } else if (document.getElementById("item").value == "") {
-    //     alert("Please add an item")
-    // } else {
-    //     list.push(newItem)
-    //     input.value = ""
-    //     console.log(list)
-    // }
+        const ul = document.getElementById("list");
+        console.log(ul)
+
+        //creating a new blank li in HTML file (no text text inside)
+        let li = document.createElement("li");
+
+        // attached the child (the item text) to the li 
+        li.appendChild(document.createTextNode(newItem));
+        // 
+        ul.appendChild(li);
+
+        //reset user input
+        newItem = ""
+
+    }
+
+
+
 
 }
-
-
-
-
 
